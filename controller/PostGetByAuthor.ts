@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getManager } from "typeorm";
+import { AppDataSource } from "..";
 import { Post } from "../entities/Post";
 
 /**
@@ -10,7 +10,7 @@ export async function postGetByAuthorAction(
   response: Response
 ) {
   // get a post repository to perform operations with post
-  const postRepository = getManager().getRepository(Post);
+  const postRepository = AppDataSource.manager.getRepository(Post);
 
   const authorId = Number(request.params.authorId);
 

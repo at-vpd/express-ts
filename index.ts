@@ -11,7 +11,8 @@ import { AppRoutes } from "./routes";
 
 export const AppDataSource = new DataSource({
   type: "sqljs",
-  entities: [Author, Category, Post]
+  entities: [Author, Category, Post],
+  synchronize: true
 });
 
 const author: DeepPartial<Author> = { name: "Author1" };
@@ -40,7 +41,7 @@ AppDataSource.initialize().then(() => {
   });
 
   // run app
-  app.listen(3010, () =>
+  app.listen(3000, () =>
     console.log("Express application is up and running on port 3000")
   );
 });
