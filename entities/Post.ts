@@ -5,32 +5,32 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
-  JoinColumn,
-} from 'typeorm';
-import { Author } from './Author';
-import { Category } from './Category';
+  JoinColumn
+} from "typeorm";
+import { Author } from "./Author";
+import { Category } from "./Category";
 
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  title: string;
+  title!: string;
 
-  @Column('text')
-  text: string;
+  @Column("text")
+  text!: string;
 
   @ManyToMany((type) => Category, {
-    cascade: true,
+    cascade: true
   })
   @JoinTable()
-  categories: Category[];
+  categories!: Category[];
 
   @Column()
-  authorId: number;
+  authorId!: number;
 
-  @JoinColumn({ name: 'authorId' })
+  @JoinColumn({ name: "authorId" })
   @ManyToOne(() => Author, (author) => author.posts)
-  author: Author;
+  author!: Author;
 }
