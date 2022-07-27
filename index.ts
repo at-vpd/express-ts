@@ -4,8 +4,7 @@ import { Category } from "./entities/Category";
 import { Post } from "./entities/Post";
 
 import "reflect-metadata";
-import { Request, Response } from "express";
-import * as express from "express";
+import express, { Express, Request, Response } from "express";
 import * as bodyParser from "body-parser";
 import { AppRoutes } from "./routes";
 
@@ -21,7 +20,7 @@ AppDataSource.initialize().then(async () => {
   AppDataSource.manager.getRepository(Category).create(category);
   AppDataSource.manager.getRepository(Post).create(posts);
 
-  const app = express();
+  const app: Express = express();
   app.use(bodyParser.json());
 
   AppRoutes.forEach((route) => {

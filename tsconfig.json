@@ -1,5 +1,29 @@
 {
+  "display": "Node 14",
   "compilerOptions": {
-    "target": "esnext"
-  }
+    "lib": [
+      "es2019",
+      "es2020.promise",
+      "es2020.bigint",
+      "es2020.string"
+    ],
+    "module": "ESNEXT",
+    "target": "ES2019",
+    "outDir": "./dist/esm",
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "**/__tests__/**"
+  ]
 }
