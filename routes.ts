@@ -1,4 +1,5 @@
-import { postGetAllAction } from './controller/PostGetAllAction';
+import { postGetAllAction } from './controller/PostGetAllByAction';
+import { postGetByAuthorAction } from './controller/PostGetByAuthor';
 import { postGetByIdAction } from './controller/PostGetByIdAction';
 import { postSaveAction } from './controller/PostSaveAction';
 
@@ -20,5 +21,10 @@ export const AppRoutes = [
     path: '/posts',
     method: 'post',
     action: postSaveAction,
+  },
+  {
+    path: '/posts/author/:authorId',
+    method: 'get',
+    action: postGetByAuthorAction,
   },
 ];
