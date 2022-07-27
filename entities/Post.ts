@@ -27,10 +27,12 @@ export class Post {
   @JoinTable()
   categories!: Category[];
 
-  @Column()
-  authorId!: number;
+  @Column({ nullable: true })
+  authorId?: number;
 
   @JoinColumn({ name: "authorId" })
-  @ManyToOne(() => Author, (author) => author.posts)
-  author!: Author;
+  @ManyToOne(() => Author, (author) => author.posts, {
+    nullable: true
+  })
+  author?: Author;
 }

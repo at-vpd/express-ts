@@ -15,16 +15,29 @@ export const AppDataSource = new DataSource({
   synchronize: true
 });
 
-const author: DeepPartial<Author> = { name: "Author1" };
-const category: DeepPartial<Category> = { name: "Category1" };
-const posts: DeepPartial<Post>[] = [
-  { text: "testTest", title: "testTitle", author, categories: [category] }
-];
+AppDataSource.initialize().then(async () => {
+  const author = AppDataSource.manager
+    .getRepository(Author)
+    .create({ name: "Author1" });
 
-AppDataSource.initialize().then(() => {
-  AppDataSource.manager.getRepository(Category).create(category);
-  AppDataSource.manager.getRepository(Post).create(posts);
+  await AppDataSource.manager.save(author);
 
+  const category = AppDataSource.manager
+    .getRepository(Category)
+    .create({ name: "test" });
+
+  await AppDataSource.manager.save(category);
+
+  const newPost = AppDataSource.manager.getRepository(Post).create({
+    text: "test",
+    title: "testTitle",
+    author,
+    categories: [category]
+  });
+
+  await AppDataSource.manager.save(newPost);
+
+  console.log("Created Seed Data");
   const app: any = express();
   app.use(bodyParser.json());
 
