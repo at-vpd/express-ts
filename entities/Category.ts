@@ -8,8 +8,4 @@ export class Category {
 
   @Column()
   name: string;
-
-  @ManyToOne(() => Author)
-  @Column()
-  author: Author;
 }
