@@ -37,7 +37,7 @@ AppDataSource.initialize().then(async () => {
   });
 
   // run app
-  app.listen(3000, () =>
+  app.listen(3010, () =>
     console.log('Express application is up and running on port 3000')
   );
 });
