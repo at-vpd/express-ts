@@ -9,7 +9,7 @@
     ],
     "module": "ESNEXT",
     "target": "ES2019",
-    "outDir": "./dist/esm",
+    "outDir": "./dist",
     "declaration": true,
     "strict": true,
     "esModuleInterop": true,
@@ -17,13 +17,20 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
   "include": [
-    "./src"
+    "./",
   ],
-  "exclude": [
-    "**/__tests__/**"
-  ]
+  "ts-node": {
+    "files": true,
+    "compilerOptions": {
+      "module": "commonjs",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "useUnknownInCatchVariables": false
+    }
+  }
 }

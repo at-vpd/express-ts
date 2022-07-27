@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { getManager } from 'typeorm';
-import { Post } from '../entity/Post';
+import { Request, Response } from "express";
+import { getManager } from "typeorm";
+import { Post } from "../entities/Post";
 
 /**
  * Loads post by a given id.
